@@ -15,17 +15,17 @@
       done: true
 
     }
-  ]
+  ];
 
   const addItem = () => {
     list = [...list, {title: newItemTitle, done: false}];
     newItemTitle = '';
-  }
+  };
 
   const removeItem = (index: number) => {
-    list.splice(index, 1)
+    list.splice(index, 1);
 		list = list;
-  }
+  };
 </script>
 
 <h1>To-Do List</h1>
