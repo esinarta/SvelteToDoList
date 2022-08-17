@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { supabase } from './supabaseClient';
+  import { supabase } from '$lib/supabaseClient';
 
-  let loading: boolean = false;
-  let email: string = '';
-  let password: string = '';
+  let loading = false;
+  let email = '';
+  let password = '';
 
   const handleAuth = async (type: string) => {
     try {
