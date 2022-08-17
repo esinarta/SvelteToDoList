@@ -1,40 +1,50 @@
 <script lang="ts">
   import { supabase } from './supabaseClient';
 
-  let loading = false;
-  let email = '';
+  let loading: boolean = false;
+  let email: string = '';
+  let password: string = '';
 
-  const handleLogin = async () => {
+  const handleAuth = async (type: string) => {
     try {
       loading = true;
-      const { error } = await supabase.auth.signIn({ email });
+      const { user, error } = 
+        type ==='login' 
+          ? await supabase.auth.signIn({ email, password }) 
+          : await supabase.auth.signUp({ email, password });
 
       if (error) throw error;
-
-      alert('Check your email for the login link!');
+      else if (!user && !error) alert('A link has been sent to your email.');
     } catch (error: any) {
-      alert(error.error_description || error.message);
+      alert(error.message);
     } finally {
       loading = false;
     }
   };
 </script>
 
-<form class="row flex-center flex" on:submit|preventDefault="{handleLogin}">
-  <div class="col-6 form-widget">
-    <h1 class="header">Supabase + Svelte</h1>
-    <p class="description">Sign in via magic link with your email below</p>
+<form>
+  <div>
+    <h1>Supabase + Svelte</h1>
+    <p>Sign in via magic link with your email below</p>
     <div>
       <input
-        class="inputField"
         type="email"
         placeholder="Your email"
         bind:value="{email}"
       />
+      <input
+        type="password"
+        placeholder="Your password"
+        bind:value="{password}"
+      />
     </div>
     <div>
-      <input type="submit" class='button block' value={loading ? "Loading" :
-      "Send magic link"} disabled={loading} />
+      <input type="submit" value={loading ? "Loading" :
+      "Log In"} disabled={loading} on:click={() => handleAuth('login')}/>
+
+      <input type="submit" value={loading ? "Loading" :
+      "Sign Up"} disabled={loading} on:click={() => handleAuth('signup')}/>
     </div>
   </div>
 </form>
