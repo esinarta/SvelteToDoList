@@ -30,6 +30,14 @@
       <li><a href="/about">About</a></li>
       <li><a href="/todo">To-Do</a></li>
     </ul>
+    <button
+      on:click={async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) alert(error.message);
+      }}
+    >
+      Log Out
+    </button>
   {:else}
     <Auth />
   {/if}

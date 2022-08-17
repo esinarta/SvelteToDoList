@@ -25,8 +25,8 @@
 
 <form>
   <div>
-    <h1>Supabase + Svelte</h1>
-    <p>Sign in via magic link with your email below</p>
+    <h1>To-Do App</h1>
+    <p>Log in or sign up:</p>
     <div>
       <input
         type="email"
