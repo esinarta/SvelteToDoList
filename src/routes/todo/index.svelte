@@ -59,15 +59,23 @@
   };
 </script>
 
-<h1>To-Do List</h1>
-
 <div>
-  <input bind:value={newTask} type="text" placeholder="New item" />
-  <button on:click={add}>Add</button>
-</div>
+  <h1 class="text-3xl font-bold">To-Do List</h1>
 
-<div>
-  {#each todos as todo}
-    <TodoItem todo={todo} onDelete={() => remove(todo.id)} />
-  {/each} 
+  <div class="form-control">
+    <div class="input-group">
+      <input
+        class="input input-bordered w-full max-w-xs"
+        type="text"
+        placeholder="New Item"
+      />
+      <button class="btn" on:click={add}>Add</button>
+    </div>
+  </div>
+  
+  <div>
+    {#each todos as todo}
+      <TodoItem todo={todo} onDelete={() => remove(todo.id)} />
+    {/each} 
+  </div>
 </div>

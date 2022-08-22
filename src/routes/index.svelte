@@ -26,12 +26,14 @@
 
 <div>
   {#if user}
-    <h1 class="text-3xl font-bold underline">Home</h1>
+    <h1 class="text-3xl font-bold">Home</h1>
     <ul>
-      <li><a href="/about">About</a></li>
-      <li><a href="/todo">To-Do</a></li>
+      <li><a class="link link-secondary" href="/about">About</a></li>
+      <li><a class="link link-secondary" href="/todo">To-Do</a></li>
     </ul>
-    <button
+    <button 
+      class="btn btn-primary" 
+      type="submit" 
       on:click={async () => {
         const { error } = await supabase.auth.signOut();
         if (error) alert(error.message);

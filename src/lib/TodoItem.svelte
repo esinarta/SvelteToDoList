@@ -23,7 +23,17 @@
 </script>
 
 <div>
-  <input on:change={toggleComplete} bind:checked={isComplete} type="checkbox">
+  <input 
+    class="checkbox checkbox-primary" 
+    type="checkbox" 
+    on:change={toggleComplete}
+    bind:checked={isComplete}
+  />
   <span>{todo.task}</span>
-  <button on:click={onDelete}>Remove</button>
+  <button 
+    class="btn btn-error" 
+    on:click={onDelete}
+  >
+    Remove
+  </button>
 </div>

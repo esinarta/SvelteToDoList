@@ -30,11 +30,13 @@
     <p>Log in or sign up:</p>
     <div>
       <input
+        class="input input-bordered w-full max-w-xs"
         type="email"
         placeholder="Your email"
         bind:value="{email}"
       />
       <input
+        class="input input-bordered w-full max-w-xs"
         type="password"
         placeholder="Your password"
         bind:value="{password}"
@@ -46,12 +48,22 @@
       </div>
     {/if}
     <div>
-      <button class="btn btn-primary">Log In</button>
-      <input type="submit" value={loading ? "Loading" :
-      "Log In"} disabled={loading} on:click={() => handleAuth('login')}/>
-
-      <input type="submit" value={loading ? "Loading" :
-      "Sign Up"} disabled={loading} on:click={() => handleAuth('signup')}/>
+      <button 
+        class="btn btn-primary" 
+        type="submit" 
+        disabled={loading} 
+        on:click={() => handleAuth('login')}
+      >
+        Log In
+      </button>
+      <button 
+        class="btn btn-primary" 
+        type="submit" 
+        disabled={loading} 
+        on:click={() => handleAuth('signup')}
+      >
+        Sign Up
+      </button>
     </div>
   </form>
 </div>
