@@ -1,6 +1,27 @@
+<script context="module" lang="ts">
+  export async function load() {
+    let { data, error } = await supabase
+      .from("todos")
+      .select("*")
+      .order("inserted_at", { ascending: true });
+    if (error) {
+      return {
+        error: new Error(error.message),
+      }
+    } else {
+			return {
+				props: {
+          data
+				}
+			};
+    }
+  }
+</script>
+
 <script lang="ts">
   import { supabase } from '$lib/supabaseClient';
   import { onMount } from "svelte";
+  export let data: any[];
 
   let newTask = '';
   let todos: any[] = [];
@@ -8,21 +29,9 @@
   let user = supabase.auth.user()
 
   onMount(() => {
-    fetchItems();
+    todos = data;
   });
-
-  const fetchItems = async () => {
-    let { data, error } = await supabase
-      .from("todos")
-      .select("*")
-      .order("inserted_at", { ascending: true });
-    if (error) {
-      alert(error.message);
-    } else {
-      if (data) todos = data;
-    }
-  };
-
+  
   const add = async () => {
     let { data, error } = await supabase
         .from("todos")
