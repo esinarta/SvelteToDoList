@@ -8,7 +8,7 @@
 
   const handleAuth = async (type: string) => {
     loading = true;
-    const { user, error } = 
+    const { error } = 
       type ==='login' 
         ? await supabase.auth.signIn({ email, password }) 
         : await supabase.auth.signUp({ email, password });

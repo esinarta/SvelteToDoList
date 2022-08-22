@@ -8,18 +8,16 @@
   let isComplete = todo.is_complete;
 
   const toggleComplete = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("todos")
-        .update({ is_complete: !isComplete })
-        .eq("id", todo.id)
-        .single();
-      if (error) {
-        throw error;
-      }
+    const { data, error } = await supabase
+      .from("todos")
+      .update({ is_complete: !isComplete })
+      .eq("id", todo.id)
+      .single();
+
+    if (error) {
+      alert(error.message);
+    } else {
       isComplete = data.is_complete;
-    } catch (error) {
-      if (error instanceof Error) alert(error.message);
     }
   };
 </script>

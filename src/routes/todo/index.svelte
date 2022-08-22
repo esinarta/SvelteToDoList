@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   export async function load() {
-    let { data, error } = await supabase
+    const { data, error } = await supabase
       .from("todos")
       .select("*")
       .order("inserted_at", { ascending: true });
@@ -29,14 +29,14 @@
   let newTask = '';
   let todos: Todo[] = [];
 
-  let user = supabase.auth.user()
+  const user = supabase.auth.user()
 
   onMount(() => {
     todos = data;
   });
   
   const add = async () => {
-    let { data, error } = await supabase
+    const { data, error } = await supabase
         .from("todos")
         .insert({ task: newTask, user_id: user?.id })
         .single();
@@ -50,11 +50,11 @@
   };
 
   const remove = async (id: number) => {
-    try {
-      await supabase.from("todos").delete().eq("id", id);
-      todos = todos.filter((t) => t.id != id);
-    } catch (error) {
-      if (error instanceof Error) alert(error.message);
+    const { error } = await supabase.from("todos").delete().eq("id", id);
+    todos = todos.filter((t) => t.id != id);
+
+    if (error) {
+      alert(error.message);
     }
   };
 </script>
