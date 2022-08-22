@@ -20,6 +20,7 @@
 
 <script lang="ts">
   import { supabase } from '$lib/supabaseClient';
+  import TodoItem from '$lib/TodoItem.svelte';
   import { onMount } from "svelte";
   export let data: any[];
 
@@ -65,9 +66,6 @@
 
 <div>
   {#each todos as todo}
-    <input bind:checked={todo.is_complete} type="checkbox">
-    <span>{todo.task}</span>
-    <button on:click={() => remove(todo.id)}>Remove</button>
-    <br/>
+    <TodoItem todo={todo} onDelete={() => remove(todo.id)} />
   {/each} 
 </div>
