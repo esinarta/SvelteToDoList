@@ -25,7 +25,7 @@
 </script>
 
 <div>
-  <h1 class="text-3xl font-bold underline">To-Do App</h1>
+  <h1 class="text-3xl font-bold">To-Do App</h1>
     <form>
     <p>Log in or sign up:</p>
     <div>
@@ -46,6 +46,7 @@
       </div>
     {/if}
     <div>
+      <button class="btn btn-primary">Log In</button>
       <input type="submit" value={loading ? "Loading" :
       "Log In"} disabled={loading} on:click={() => handleAuth('login')}/>
 
