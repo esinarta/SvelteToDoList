@@ -15,8 +15,8 @@
 
       if (error) throw error;
       else if (!user && !error) alert('A link has been sent to your email.');
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
     } finally {
       loading = false;
     }

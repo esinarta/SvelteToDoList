@@ -1,7 +1,8 @@
 <script lang="ts">
   import { supabase } from '$lib/supabaseClient';
+  import type { Todo } from '../models/Todo.type';
 
-  export let todo: any;
+  export let todo: Todo;
   export let onDelete: () => void;
 
   let isComplete = todo.is_complete;

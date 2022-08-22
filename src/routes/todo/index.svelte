@@ -22,10 +22,12 @@
   import { supabase } from '$lib/supabaseClient';
   import TodoItem from '$lib/TodoItem.svelte';
   import { onMount } from "svelte";
-  export let data: any[];
+  import type { Todo } from '../../models/Todo.type';
+
+  export let data: Todo[];
 
   let newTask = '';
-  let todos: any[] = [];
+  let todos: Todo[] = [];
 
   let user = supabase.auth.user()
 
