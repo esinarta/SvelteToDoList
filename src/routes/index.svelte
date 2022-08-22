@@ -3,6 +3,7 @@
   import Auth from '$lib/Auth.svelte';
   import type { User } from '@supabase/supabase-js';
   import { onMount } from "svelte";
+  import "../app.css";
 
   let user: User | null;
 
@@ -25,7 +26,7 @@
 
 <div>
   {#if user}
-    <h1>Home</h1>
+    <h1 class="text-3xl font-bold underline">Home</h1>
     <ul>
       <li><a href="/about">About</a></li>
       <li><a href="/todo">To-Do</a></li>

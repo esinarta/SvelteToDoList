@@ -1,5 +1,6 @@
 <script lang="ts">
   import { supabase } from '$lib/supabaseClient';
+  import "../app.css";
 
   let loading = false;
   let email = '';
@@ -24,7 +25,7 @@
 </script>
 
 <div>
-  <h1>To-Do App</h1>
+  <h1 class="text-3xl font-bold underline">To-Do App</h1>
     <form>
     <p>Log in or sign up:</p>
     <div>
