@@ -37,9 +37,9 @@
   
   const add = async () => {
     const { data, error } = await supabase
-        .from("todos")
-        .insert({ task: newTask, user_id: user?.id })
-        .single();
+      .from("todos")
+      .insert({ task: newTask, user_id: user?.id })
+      .single();
        
     if (error) {
       alert(error.message);
@@ -59,23 +59,25 @@
   };
 </script>
 
-<div>
-  <h1 class="text-3xl font-bold">To-Do List</h1>
-
-  <div class="form-control">
-    <div class="input-group">
-      <input
-        class="input input-bordered w-full max-w-xs"
-        type="text"
-        placeholder="New Item"
-      />
-      <button class="btn" on:click={add}>Add</button>
+<div class="text-center">
+  <h1 class="text-3xl font-bold my-4">To-Do List</h1>
+  <div class="flex flex-col items-center">
+    <div class="form-control">
+      <div class="input-group my-4">
+        <input
+          class="input input-bordered w-full max-w-xs"
+          type="text"
+          placeholder="New Item"
+          bind:value={newTask}
+        />
+        <button class="btn" on:click={add}>Add</button>
+      </div>
     </div>
-  </div>
-  
-  <div>
-    {#each todos as todo}
-      <TodoItem todo={todo} onDelete={() => remove(todo.id)} />
-    {/each} 
+    
+    <div>
+      {#each todos as todo}
+        <TodoItem todo={todo} onDelete={() => remove(todo.id)} />
+      {/each} 
+    </div>
   </div>
 </div>

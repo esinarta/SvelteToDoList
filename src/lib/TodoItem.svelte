@@ -22,16 +22,16 @@
   };
 </script>
 
-<div>
+<div class="grid grid-cols-8 gap-2 w-80 my-2">
   <input 
-    class="checkbox checkbox-primary" 
+    class="checkbox checkbox-primary col-span-1" 
     type="checkbox" 
     on:change={toggleComplete}
     bind:checked={isComplete}
   />
-  <span>{todo.task}</span>
+  <span class="col-span-5">{todo.task}</span>
   <button 
-    class="btn btn-error" 
+    class="btn btn-error btn-sm col-span-2" 
     on:click={onDelete}
   >
     Remove

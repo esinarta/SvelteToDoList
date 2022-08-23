@@ -24,15 +24,15 @@
   });
 </script>
 
-<div>
+<div class="text-center">
   {#if user}
-    <h1 class="text-3xl font-bold">Home</h1>
+    <h1 class="text-3xl font-bold my-4">Home</h1>
     <ul>
       <li><a class="link link-secondary" href="/about">About</a></li>
       <li><a class="link link-secondary" href="/todo">To-Do</a></li>
     </ul>
     <button 
-      class="btn btn-primary" 
+      class="btn btn-primary my-8" 
       type="submit" 
       on:click={async () => {
         const { error } = await supabase.auth.signOut();
